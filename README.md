@@ -4,6 +4,15 @@ The code from the video. It is the agent from video 1 with about twenty new line
 our own (Wikipedia, free, no sign-up) and Google's built-in tool that reads a web page (free on the
 free tier). No card is needed anywhere.
 
+## Start here
+
+New computer, or starting today? The seven setup steps the video shows (Python, VS Code, Git, clone
+the starting agent, the two packages, a free key, run it once) are written step by step, with their
+checks and errors, in [START-HERE.md](START-HERE.md). Already set up? Go straight to step 2 below.
+
+The starting agent (what the video clones in setup 4): https://github.com/aditejus/L03-first-ai-agent
+This repository is the finished code of the video, for comparing with what you typed.
+
 ## What is in this folder
 
 | File | What it is |
