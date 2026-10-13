@@ -1,41 +1,46 @@
-# Starting today? Set up here (about five minutes, all free)
+# Starting today? Set up here (about ten minutes, all free)
 
-This folder, `first-agent`, is a small working agent that reads three notes. The video "Give Your
-AI Agent the Internet in 5 Simple Steps" starts from it. Do these five things once, then follow the
-video from step 2.
+These are the seven setup steps the video shows, in the same order. Do them once. If you already
+have a thing, skip that step.
 
-**Mac users:** wherever these steps say `python`, type `python3`. Wherever they say `pip`, type `pip3`.
+**Mac users:** wherever these steps say `python`, type `python3`.
 
-1. **Python** (3.10 or newer). Install it from python.org. On Windows, tick "Add to PATH" during the
-   install.
-2. **VS Code**, the free editor. Install it from code.visualstudio.com. Open it once.
-   **Git**, the free tool VS Code uses to fetch code, from git-scm.com: run the installer with every
-   default. Then, in VS Code, press Ctrl+Shift+P (Mac: Cmd+Shift+P), type `Git: Clone`, paste
-   `https://github.com/aditejus/L03-first-ai-agent.git`, choose a folder, and click Open when it asks.
-   (If you unzipped this download instead, open this `first-agent` folder with File, Open Folder.)
-3. **The terminal**, the place where we type commands. In VS Code open the Terminal menu and choose
-   New Terminal. A panel opens at the bottom, already inside this folder. Check Python is there:
+1. **Python** (3.10 or newer). Install it from python.org. On Windows, tick "Add python.exe to PATH"
+   before you click Install Now.
+2. **VS Code**, the free editor. Install it from code.visualstudio.com, and open it once.
+3. **Git**, the free tool VS Code uses to fetch code. Install it from git-scm.com: run the installer
+   and keep every default.
+4. **The code.** In VS Code press Ctrl+Shift+P (Mac: Cmd+Shift+P), type `Git: Clone`, and paste:
+
+   ```
+   https://github.com/aditejus/L04-agent-web.git
+   ```
+
+   Choose a folder, and click Open when it asks. Then open the Terminal menu and choose New Terminal:
+   a panel opens at the bottom, already inside the folder. That is where every command is typed.
+   Check Python is there:
 
    ```
    python --version
    ```
 
    You should see `Python 3.` and a number, 10 or higher. If you see `'python' is not recognized` or
-   `Python was not found`: install Python again with "Add to PATH" ticked, then close VS Code and
-   open it again.
-4. **Two packages**, one line:
+   `Python was not found`: close VS Code and open it again (it was open while Python installed), or
+   install Python again with "Add python.exe to PATH" ticked.
+
+   No Git? Use the green Code button on the repository's page, Download ZIP, unzip it, and open the
+   folder with File, Open Folder.
+5. **Two packages**, one line:
 
    ```
-   pip install google-genai python-dotenv
+   python -m pip install google-genai python-dotenv
    ```
 
-   It ends with `Successfully installed ...`.
-   - If Windows says `Program 'pip.exe' failed to run: An Application Control policy has blocked
-     this file` (Windows 11 with Smart App Control on), type this instead, and use it every time
-     these steps say `pip`: `python -m pip install google-genai python-dotenv`.
-   - If Python later says `No module named 'google'`, run the same line:
-     `python -m pip install google-genai python-dotenv`.
-5. **A free key**, which is like a password: it tells Google the requests come from you. In your
+   It ends with `Successfully installed ...`. This is the form the video types. The shorter
+   `pip install ...` does the same, but Windows 11 with Smart App Control on may refuse it with
+   `Program 'pip.exe' failed to run: An Application Control policy has blocked this file`; the
+   `python -m pip` form above is the fix.
+6. **A free key**, which is like a password: it tells Google the requests come from you. In your
    browser open aistudio.google.com and sign in with a Google account. Click "Get API key", then
    "Create API key", and copy the key. No card is asked for. Do not click "Set up billing" unless
    you mean to pay.
@@ -48,19 +53,16 @@ video from step 2.
    ```
 
    No spaces, no quotes. Never put the key in the code, and never share the `.env` file.
+7. **Run it once.**
 
-## Check it works
+   ```
+   python agent.py
+   ```
 
-```
-python agent.py
-```
+   It prints each tool call as it happens, then an answer about Tuesday's note: invoice 2231, 4,850
+   rupees. Your wording will differ. If nothing appears for a while, wait: a call can take from a few
+   seconds to a couple of minutes. If nothing appears for more than five minutes, press Ctrl + C: the
+   day's free requests are probably used up, and it will work again tomorrow.
 
-It prints each tool call as it happens, then an answer about Tuesday's note: invoice 2231, 4,850
-rupees. Your wording will differ. If nothing appears for a while, wait: a call can take from a few
-seconds to a couple of minutes. If nothing appears for more than five minutes, press Ctrl + C: the
-day's free requests are probably used up, and it will work again tomorrow.
-
-That is the whole setup. Now go to step 2 of the video.
-
-The finished code from today's video is in the other folder, `first-agent-web`, for comparing with
-what you typed.
+That is the whole setup. Now follow the video from step 2: you will change `agent.py`. The finished
+version is in the `finished/` folder, for comparing with what you typed.

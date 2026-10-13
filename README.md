@@ -1,43 +1,37 @@
 # Give your AI agent the internet, in 5 simple steps
 
-The code from the video. It is the agent from video 1 with about twenty new lines: a search tool of
-our own (Wikipedia, free, no sign-up) and Google's built-in tool that reads a web page (free on the
-free tier). No card is needed anywhere.
+The code for the AdiTejus video (day 2 of learning AI). You clone this repository in the video's
+setup, run the small agent in it once, and then add about twenty lines: a search tool of our own
+(Wikipedia, free, no sign-up) and Google's built-in tool that reads a web page (free on the free
+tier). No card is needed anywhere.
 
 ## Start here
 
 New computer, or starting today? The seven setup steps the video shows (Python, VS Code, Git, clone
-the starting agent, the two packages, a free key, run it once) are written step by step, with their
-checks and errors, in [START-HERE.md](START-HERE.md). Already set up? Go straight to step 2 below.
+this repository, the two packages, a free key, run it once) are written out, with their checks and
+errors, in [START-HERE.md](START-HERE.md). Already set up? Go straight to step 2 below.
 
-The starting agent (what the video clones in setup 4): https://github.com/aditejus/L03-first-ai-agent
-This repository is the finished code of the video, for comparing with what you typed.
+```
+https://github.com/aditejus/L04-agent-web.git
+```
 
-## What is in this folder
+## What is in this repository
 
 | File | What it is |
 | --- | --- |
-| `agent.py` | The finished agent: video 1's file plus the new lines from steps 2, 3 and 5. |
-| `test_search.py` | Step 2: tests the search tool alone. Free: it never calls the model. |
-| `notes/` | The three sample notes from video 1. |
-| `read_page_fallback.py` | Only for the day Google's built-in reader stops working. See the end. |
-| `requirements.txt` | The two packages from video 1. Nothing new to install. |
+| `agent.py` | **Where you start:** a small working agent, about forty lines, that reads three notes. The video's five steps change this file. |
+| `notes/` | Three sample notes the agent is allowed to read. |
+| `requirements.txt` | The two packages to install. |
 | `.env.example` | Shows what your own `.env` file must contain. |
+| `START-HERE.md` | The setup, step by step. |
+| `finished/` | **Where you end:** the finished `agent.py`, `test_search.py` and `read_page_fallback.py`, for comparing with what you typed. |
+| `docs/step-card.pdf` | The five steps on one page. |
 
-## Before you start
-
-This video builds on the small agent in the `first-agent` folder of this download. You need its
-setup: Python 3.10 or newer, VS Code, the two packages, a free Gemini key, and a `.env` file with one
-line in it:
+You need a `.env` file in this folder, next to `agent.py`, with one line in it:
 
 ```
 GEMINI_API_KEY=paste-your-key-here
 ```
-
-Start in the other folder of this download, `first-agent`: its `START-HERE.md` lists the five setup
-steps (about five minutes, all free). If you already have a `first-agent` folder from before, keep
-working in it. This folder, `first-agent-web`, is the
-finished code, for comparing with what you typed.
 
 **Mac users:** wherever these steps say `python`, type `python3`.
 
@@ -46,7 +40,8 @@ finished code, for comparing with what you typed.
 1. **What "the web" means for an agent.** Two abilities: find a page, then read it.
 2. **A search tool of our own.** In `agent.py`: two `import urllib...` lines at the top, the
    `search_wikipedia` function, its entry in `TOOLS`, the `OURS` table, and the new last line of
-   `run_tool`. Then test it alone:
+   `run_tool`. Then make a file called `test_search.py` with the two lines the video shows, and run
+   it:
 
    ```
    python test_search.py
@@ -54,7 +49,8 @@ finished code, for comparing with what you typed.
 
    You should see a page title and its address within a second or two.
 3. **The reading tool.** One line in `TOOLS`: `{"type": "url_context"},` and three lines in `agent`
-   that print each page the model opens.
+   that print each page the model opens. There is nothing to run in this step: you see it work in
+   step 4.
 4. **A goal that needs the web.** The goal used in the video at this step:
 
    ```
@@ -68,11 +64,13 @@ finished code, for comparing with what you typed.
 
    You should see a `tool call -> search_wikipedia` line, a `web page ->` line, then the answer.
 
-   In this download that goal is the two lines near the bottom of `agent.py` that start with `#`.
-   To run it, remove the `# ` from those two lines and put `# ` in front of the two lines below them.
+   In `finished/agent.py` that goal is the two lines near the bottom that start with `#`. To run it
+   there, remove the `# ` from those two lines and put `# ` in front of the two lines below them.
 5. **Trust, but check.** Open the address the agent gave, and open python.org/downloads. If they
-   disagree, the agent was wrong. Then use the goal that is in this download's `agent.py`: it names
-   the source.
+   disagree, the agent was wrong. Then use the goal that is in `finished/agent.py`: it names the
+   source.
+
+To run the finished version without typing anything: `python finished/agent.py`.
 
 ## The errors you are most likely to see
 
@@ -80,13 +78,13 @@ finished code, for comparing with what you typed.
 | --- | --- |
 | `NameError: name 'urllib' is not defined` | The two import lines at the top are missing or misspelled. |
 | `URLError` or `getaddrinfo failed` | Your internet connection dropped. Check it and run again. |
-| `SyntaxError` or `IndentationError` | A typing slip on the line Python names. Compare it with this download. |
+| `SyntaxError` or `IndentationError` | A typing slip on the line Python names. Compare it with `finished/agent.py`. |
 | `NameError: name 'OURS' is not defined` | The `OURS = {...}` line under the `TOOLS` list is missing. |
 | `NameError: name 'search_wikipedia' is not defined` | The function is missing, or its name is spelled differently. |
 | `TypeError: read_file() got an unexpected keyword argument 'query'` | The last line of `run_tool` was not changed to `return OURS[name](**args)`. |
 | `KeyError` with a tool's name | That name is missing from the `OURS` line, or spelled differently there. |
 | `No API key was provided` | The `.env` file must be in this folder, next to `agent.py`, named exactly `.env`. |
-| `Program 'pip.exe' failed to run: An Application Control policy has blocked this file` | Windows 11 with Smart App Control on refuses `pip.exe`. Type `python -m pip install google-genai python-dotenv` instead, and use `python -m pip` wherever these steps say `pip`. |
+| `Program 'pip.exe' failed to run: An Application Control policy has blocked this file` | Windows 11 with Smart App Control on refuses `pip.exe`. Use the form the video types: `python -m pip install google-genai python-dotenv`. |
 | `429` ... `Rate limit exceeded` | Read the message: it names the limit. "per minute": wait a minute and run again. "per day": come back tomorrow (it says in how many hours). |
 | Nothing for more than five minutes | Press Ctrl+C. Usually the daily limit: the program sometimes waits in silence instead of showing the message. |
 | `402` ... `prepayment credits are depleted` | Billing was switched on for the project. Use a new project with billing off. |
@@ -111,10 +109,10 @@ Google's own Search tool is not on the free tier, which is why this video does n
 ## If the built-in reader stops working
 
 Google marks the combination of its built-in tools with your own as a Preview feature, so it may
-change. `read_page_fallback.py` is a page reader of our own. Test it alone first (free):
+change. `finished/read_page_fallback.py` is a page reader of our own. Test it alone first (free):
 
 ```
-python read_page_fallback.py
+python finished/read_page_fallback.py
 ```
 
 To use it in `agent.py`:
@@ -132,3 +130,5 @@ tested the function on its own. I have not needed it with the agent yet.
 
 Change the question. Name the page you trust in the goal. Ask the agent to compare one of your notes
 with a web page.
+
+The presenter in the video is an AI avatar with an AI voice; the code and every run shown are real.
