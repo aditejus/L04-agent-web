@@ -13,10 +13,11 @@ have a thing, skip that step.
 4. **The code.** In VS Code press Ctrl+Shift+P (Mac: Cmd+Shift+P), type `Git: Clone`, and paste:
 
    ```
-   https://github.com/aditejus/L04-agent-web.git
+   https://github.com/aditejus/L03-first-ai-agent.git
    ```
 
-   Choose a folder, and click Open when it asks. Then open the Terminal menu and choose New Terminal:
+   That is the address the video shows. (This repository's own address has the same starting files
+   and also the finished code.) Choose a folder, and click Open when it asks. Then open the Terminal menu and choose New Terminal:
    a panel opens at the bottom, already inside the folder. That is where every command is typed.
    Check Python is there:
 

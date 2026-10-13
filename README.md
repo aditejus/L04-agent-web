@@ -1,19 +1,24 @@
 # Give your AI agent the internet, in 5 simple steps
 
-The code for the AdiTejus video (day 2 of learning AI). You clone this repository in the video's
-setup, run the small agent in it once, and then add about twenty lines: a search tool of our own
+The code for the AdiTejus video (day 2 of learning AI). In its setup the video clones a small
+starting agent, runs it once, and then adds about twenty lines: a search tool of our own
 (Wikipedia, free, no sign-up) and Google's built-in tool that reads a web page (free on the free
 tier). No card is needed anywhere.
 
 ## Start here
 
 New computer, or starting today? The seven setup steps the video shows (Python, VS Code, Git, clone
-this repository, the two packages, a free key, run it once) are written out, with their checks and
-errors, in [START-HERE.md](START-HERE.md). Already set up? Go straight to step 2 below.
+the starting agent, the two packages, a free key, run it once) are written out, with their checks
+and errors, in [START-HERE.md](START-HERE.md). Already set up? Go straight to step 2 below.
+
+The address the video clones is the starting agent's own repository:
 
 ```
-https://github.com/aditejus/L04-agent-web.git
+https://github.com/aditejus/L03-first-ai-agent.git
 ```
+
+This repository has the same starting files at its top level, so cloning this one works just as
+well, and it adds the finished code in `finished/`.
 
 ## What is in this repository
 
